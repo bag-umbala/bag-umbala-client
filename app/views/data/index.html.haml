@@ -1,0 +1,8 @@
+%h1 Authorization Page / Display Page
+- if session[:current_access_token]
+  %p Here's the resource owner (user)
+  -#- byebug
+  = @me["email"]
+  %p= link_to 'Go back to Main App', "#{ENV['OAUTH_PROVIDER_URL']}"
+- else
+  = link_to 'Authorize via Your Main App/OAuth Server', new_oauth_token_path
