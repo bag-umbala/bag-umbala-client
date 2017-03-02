@@ -20,4 +20,19 @@ class DataController < ApplicationController
     session[:current_access_token] = response['access_token']
     redirect_to root_path
   end
+
+  def destroy_session
+    # # called for Resource Owner Password Credentials Grant
+    # resource_owner_from_credentials do
+    #   request.params[:user] = {:email => request.params[:username], :password => request.params[:password]}
+    #   request.env["devise.allow_params_authentication"] = true
+    #   user = request.env["warden"].authenticate!(:scope => :user)
+    #   env['warden'].logout
+    #   user
+    # end
+    # cookies.delete '_rails_oauth_test_client_session'
+    cookies.clear
+    reset_session
+    redirect_to root_path
+  end
 end

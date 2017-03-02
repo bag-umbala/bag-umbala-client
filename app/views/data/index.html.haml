@@ -4,5 +4,6 @@
   -#- byebug
   = @me["email"]
   %p= link_to 'Go back to Main App', "#{ENV['OAUTH_PROVIDER_URL']}"
+  %p= link_to 'Logout', oauth_logout_path
 - else
   = link_to 'Authorize via Your Main App/OAuth Server', new_oauth_token_path
