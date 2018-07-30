@@ -1,13 +1,20 @@
-OAUTH_PROVIDER_URL: 'http://localhost:3000'
+OAUTH_PROVIDER_URL: 'http://lvh.me:3000'
 
 #OAUTH_TOKEN: '402ad74e8271602be688a775ec84952b36abc027bdca16f34bdb61278004154a'
 #OAUTH_SECRET: '513abfebaef67b174f52ea6c5d53d190e1ac3cd6080759a88328b18cba3aa7fb'
 #OAUTH_REDIRECT_URI: 'http%3A%2F%2Flocalhost%3A3001%2Foauth%2Fcallback'
 
 # key from bag-umbala-night
-OAUTH_TOKEN: '69523d1024f5ad520567e12d3c82dbaff7bd3e273b20a9606a3638438875bfcf'
-OAUTH_SECRET: 'acdebe3e51a015d5a8c5acf3050bc6dae7e55c82283edb92325a6a347ff46801'
+#OAUTH_TOKEN: '69523d1024f5ad520567e12d3c82dbaff7bd3e273b20a9606a3638438875bfcf'
+#OAUTH_SECRET: 'acdebe3e51a015d5a8c5acf3050bc6dae7e55c82283edb92325a6a347ff46801'
+#OAUTH_REDIRECT_URI: 'http%3A%2F%2Flocalhost%3A3001%2Foauth%2Fcallback'
+# key from bag-umbala-night
+
+# key from bag-umbala-night
+OAUTH_TOKEN: 'd9862e7a22577d66c375331d7ff19f4cdf68ffa5518b42caed736bb91de5e105'
+OAUTH_SECRET: 'e32a7f0aeef194c23d84813ec2a7287cd1ac8d3db6efbc8d81acb17a23408d0b'
 OAUTH_REDIRECT_URI: 'http%3A%2F%2Flocalhost%3A3001%2Foauth%2Fcallback'
+#OAUTH_REDIRECT_URI: 'http://localhost:3001/oauth/callback'
 # key from bag-umbala-night
 
 #OAUTH_TOKEN: 'f5338fc28df7719f48cbe2dcdb5a07c90e82e37c4b60f19b4ff430677cc29230'

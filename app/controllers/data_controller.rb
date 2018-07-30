@@ -1,4 +1,8 @@
+require 'uri'
+
 class DataController < ApplicationController
+  skip_before_action :save_original_path, only: [:index, :create_session, :destroy_session]
+
   def index
     if session[:current_access_token]
       @me = HTTParty.get "#{ENV['OAUTH_PROVIDER_URL']}/api/v1/users/me.json", { query: { access_token: session[:current_access_token]} }
@@ -8,8 +12,23 @@ class DataController < ApplicationController
       elsif @me["role_code"] == ROLE_CUSTOMER
         flash[:notice] = "Đăng nhập Cửa hàng thành công!";
       end
+      # redirect_to (session[:return_to] || root_path)
     else
-      redirect_to "#{ENV['OAUTH_PROVIDER_URL']}/oauth/authorize?client_id=#{ENV['OAUTH_TOKEN']}&redirect_uri=#{ENV['OAUTH_REDIRECT_URI']}&response_type=code"
+      redirect_to "#{ENV['OAUTH_PROVIDER_URL']}/oauth/authorize?client_id=#{ENV['OAUTH_TOKEN']}&redirect_uri=#{ENV['OAUTH_REDIRECT_URI']}&response_type=code&return_to=http%3A%2F%2Flocalhost%3A3001%2Ftest"
+    end
+  end
+
+  def test
+    puts "test"
+    if session[:current_access_token]
+      @me = HTTParty.get "#{ENV['OAUTH_PROVIDER_URL']}/api/v1/users/me.json", { query: { access_token: session[:current_access_token]} }
+
+      if @me["role_code"] == ROLE_MANAGER
+        # redirect_to "#{ENV['OAUTH_PROVIDER_URL']}"
+      elsif @me["role_code"] == ROLE_CUSTOMER
+        flash[:notice] = "Đăng nhập Cửa hàng thành công!";
+      end
+      # redirect_to (session[:return_to] || root_path)
     end
   end
 
@@ -18,7 +37,8 @@ class DataController < ApplicationController
     response = HTTParty.post("#{ENV['OAUTH_PROVIDER_URL']}/oauth/token", body: req_params)
     # pp response
     session[:current_access_token] = response['access_token']
-    redirect_to root_path
+    redirect_to (session[:return_to] || root_path)
+    # redirect_to root_path
   end
 
   def destroy_session
@@ -31,6 +51,7 @@ class DataController < ApplicationController
     #   user
     # end
     # cookies.delete '_rails_oauth_test_client_session'
+    session[:return_to] = nil
     cookies.clear
     reset_session
     redirect_to root_path

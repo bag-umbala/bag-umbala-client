@@ -1,3 +1,6 @@
+Hihi
+= link_to "Home", root_path
+
 %h1 Authorization Page / Display Page
 - if session[:current_access_token]
   %p Here's the resource owner (user)
@@ -6,4 +9,4 @@
   %p= link_to 'Go back to Main App', "#{ENV['OAUTH_PROVIDER_URL']}/manager"
   %p= link_to 'Logout', oauth_logout_path
 - else
-  = link_to 'Authorize via Your Main App/OAuth Server', new_oauth_token_path
+  -#= link_to 'Authorize via Your Main App/OAuth Server', new_oauth_token_path

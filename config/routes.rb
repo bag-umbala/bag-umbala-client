@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   get '/oauth/callback', to: 'data#create_session'
   get '/oauth/logout', to: 'data#destroy_session'
   get '/index', to: 'data#index'
+  get '/test', to: 'data#test'
   root to: 'data#index'
 end
